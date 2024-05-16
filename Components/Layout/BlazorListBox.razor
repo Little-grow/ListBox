@@ -1,0 +1,51 @@
+﻿<h3>BlazorListBox</h3>
+
+<div style="width:auto">
+    <span>
+        <button class="btn-sm" @onclick="Clear">Clear List</button>
+    </span>
+    <div>
+        <div class="btn-outline-light active btn-sm p-3">displayName</div>
+    </div>
+
+    <div>
+        <select @bind="SelectedValue" multiple size="7" class="overflow-auto" style="font-size:medium; min-width:250px; max-width: 270px;">
+            @if (DataOptions != null)
+            {
+                foreach (var item in DataOptions)
+                {
+                    <option class="px-2" @onmousedown="@(async (em) => CurrentMouseEvent = em)" value="@item.Id" style="@(SelectedValue ==item.DisplayVal ? "background-color:lighgray" : "background-color:wight")">
+                        @item.DisplayVal
+                    </option>
+                }
+            }
+        </select>
+    </div>
+</div>
+
+@code {
+
+    [Parameter] public List<Department> DataOptions { get; set; }
+    [Parameter] public string SelectedValue { get; set; } // Selected items of the same type as DataOptions
+    [Parameter] public EventCallback<string> ValueChanged { get; set; } // Event to notify of changes in selected values
+
+    private MouseEventArgs CurrentMouseEvent = null;
+
+    protected override void OnInitialized()
+    {
+        SelectedValue = ""; // Initialize with empty list
+    }
+
+    private void OnSelectionChange(ChangeEventArgs e)
+    {
+
+        ValueChanged.InvokeAsync(SelectedValue); // Notify of changes
+    }
+
+   
+    private void Clear()
+    {
+        SelectedValue = null;// Clear selected items
+        ValueChanged.InvokeAsync(SelectedValue); // Notify of changes
+    }
+}

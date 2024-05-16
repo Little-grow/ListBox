@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "BLAZOR_LIST_BOX/1.0.0": {
+        "runtime": {
+          "BLAZOR_LIST_BOX.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BLAZOR_LIST_BOX/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BLAZOR_LIST_BOX.props" />
+</Project>

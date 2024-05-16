@@ -1,0 +1,38 @@
+﻿@page "/list"
+@using BLAZOR_LIST_BOX.Components.Layout
+
+<h3>ListPage</h3>
+
+
+<BlazorListBox DataOptions="@listBoxData" SelectedValue="@selectedItems" ValueChanged="@OnSelectionChanged">
+
+</BlazorListBox>
+
+<EmployeesListBox>
+
+</EmployeesListBox>
+
+@code {
+    private List<Department> listBoxData;
+    private string selectedItems = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        listBoxData = new List<Department>();
+        // genertate any random data
+        for (int i = 0; i < 30; i++)
+        {
+            Department model = new Department();
+            model.Id = i.ToString();
+            model.DisplayVal = "item" + i.ToString();
+
+            listBoxData.Add(model);
+        }
+    }
+
+
+    private void OnSelectionChanged(string newSelectedValue)
+    {
+        selectedItems = newSelectedValue;
+    }
+}
